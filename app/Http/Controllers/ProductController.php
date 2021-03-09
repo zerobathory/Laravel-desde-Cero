@@ -1,9 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Product;
 
 class ProductController extends Controller {
 	public function index() {
+
+		$products = Product::all();
+
+		//$products = DB::table('products')->get();
+
+		dd($products);
+
 		return view('products.index');
 	}
 
@@ -16,6 +24,12 @@ class ProductController extends Controller {
 	}
 
 	public function show($product) {
+		$product = Product::findOrFail($product);
+		//$product = DB::table('products')->where('id', $product)->first();
+		//$product = DB::table('products')->find($product);
+
+		dd($product);
+
 		return view('products.show');
 	}
 
