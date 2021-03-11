@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('content')
 	<h1>{{$product->title}} ({{$product->id}})</h1>
 	<p>{{$product->description}}</p>
 	<p>{{$product->price}}</p>
@@ -12,5 +8,4 @@
 
 	{{--$html--}}
 	@{{$var}}
-</body>
-</html>
+@endsection

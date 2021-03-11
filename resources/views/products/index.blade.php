@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('content')
 	<h1>List of Products</h1>
 
+	@empty($products)
+		<div class="alert alert-warning">
+			The list of products is empty
+		</div>
+	@else
 	<div class="table-responsive">
 		<table class="table table-striped">
 			<thead class="thead-light">
@@ -13,21 +14,23 @@
 					<th>Id</th>
 					<th>Title</th>
 					<th>Description</th>
+					<th>Stock</th>
+					<th>Status</th>
 				</tr>
 			</thead>
 			<tbody>
+				@foreach($products as $product)
 				<tr>
-					<td>1</td>
-					<td>Soap</td>
-					<td>Best Soap ever</td>
+					<td>{{$product->id}}</td>
+					<td>{{$product->title}}</td>
+					<td>{{$product->description}}</td>
+					<td>{{$product->price}}</td>
+					<td>{{$product->stock}}</td>
+					<td>{{$product->status}}</td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Shamnpoo</td>
-					<td>Best Shampoo ever</td>
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
-</body>
-</html>
+	@endempty
+@endsection
